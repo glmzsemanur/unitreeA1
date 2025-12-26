@@ -21,8 +21,8 @@
           args="-urdf -model $(arg rname)_gazebo -param robot_description -unpause 
           -x 21
           -y -17
-          -z 1.7   
-          -Y 3.14
+          -z 2 
+          -Y 0
           ">
     </node>
 
@@ -78,11 +78,16 @@
       name="listen"
       args="0 0 4 0"
       output="screen"
-      launch-prefix="bash -c 'sleep 5.2; $0 $@' "/>
+      launch-prefix="bash -c 'sleep 5.20; $0 $@' "/>
     <node pkg="robot_localization"
       type="ekf_localization_node"
       name="ekf_localization"
       launch-prefix="bash -c 'sleep 5.25; $0 $@'">
         <rosparam command="load" file="$(find summit_odometry)/config/ekf_localization.yaml"/>
     </node>
+    <node pkg="unitree_guide"
+      type="pose_translator.py"
+      name="robot_odom_to_pose_publisher"
+      output="screen"
+      launch-prefix="bash -c 'sleep 5.30; $0 $@' "/>
 </launch>

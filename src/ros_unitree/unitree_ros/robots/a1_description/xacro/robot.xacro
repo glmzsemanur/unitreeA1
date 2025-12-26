@@ -160,12 +160,12 @@
             <material name="red"/>
             <origin xyz="0 0 0.08" rpy="0 0 0"/>
         </visual>
-        <collision>
+        <!-- <collision>
             <geometry>
                 <cylinder length="0.05" radius="0.03"/>
             </geometry>
             <origin xyz="0 0 0.08" rpy="0 0 0"/>
-        </collision>
+        </collision> -->
     </link>     
 
 </robot>

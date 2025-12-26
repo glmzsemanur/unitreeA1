@@ -75,15 +75,15 @@
                         <max_angle>3.14159</max_angle>  <!-- +180° -->
                     </horizontal>
                     <vertical> <!-- 30° FOV and 0.5 resolution-->
-                        <samples>61</samples>           <!-- 30° / 0.5° + 1 -->
+                        <samples>60</samples>           <!-- 30° / 0.5° + 1 -->
                         <resolution>1</resolution>
                         <min_angle>-0.2618</min_angle>  <!-- -15° to -->
                         <max_angle>0.2618</max_angle>   <!-- +15° -->
                     </vertical>
                 </scan>
                 <range> <!-- 50 m range -->
-                    <min>0.1</min>
-                    <max>50.0</max>
+                    <min>0.4</min>
+                    <max>50</max>
                     <resolution>0.01</resolution>
                 </range>
             </ray>
