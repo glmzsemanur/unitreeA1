@@ -1,16 +1,18 @@
+# Catkin / ROS
 build/
-
 devel/
-
 install/
-
 logs/
+.ros/
+.catkin_workspace
 
-*.pyc
+# catkin_tools
+.catkin_tools/
 
-*.swp
-
+# IDE
 .vscode/
-
 .idea/
 
+# Python
+__pycache__/
+*.pyc
