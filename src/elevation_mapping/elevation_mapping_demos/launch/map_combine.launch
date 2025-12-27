@@ -1,0 +1,9 @@
+<launch>
+  <node pkg="rosbag" type="play" name="player" args="--clock /home/semanur/catkin_ws/src/elevation_mapping/integration/elevation_map_134.bag /home/semanur/catkin_ws/src/elevation_mapping/integration/elevation_map_34.bag"/>
+
+  <node pkg="map_merge_tool" type="map_merge_node" name="map_merge" output="screen">
+    <param name="output_map_topic" value="/combined_elevation_map"/>
+    <param name="resolution" value="0.15"/>
+    <param name="input_topics" value="/elevation_map_raw"/> 
+  </node>
+</launch>

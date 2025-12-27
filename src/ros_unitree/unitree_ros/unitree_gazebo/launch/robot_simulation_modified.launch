@@ -21,7 +21,7 @@
           args="-urdf -model $(arg rname)_gazebo -param robot_description -unpause 
           -x 21
           -y -17
-          -z 2 
+          -z 2.5
           -Y 0
           ">
     </node>

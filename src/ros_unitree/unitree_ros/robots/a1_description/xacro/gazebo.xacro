@@ -63,7 +63,7 @@
     <gazebo reference="lidar_link">
         <material>Gazebo/Red</material>
         <sensor type="gpu_ray" name="lidar_sensor">
-            <pose> 0 0 0.08 0 0 0 </pose>
+            <pose> 0 0 0.15 0 0 0 </pose>
             <visualize>false</visualize>
             <update_rate>10</update_rate> <!-- 10 Hz refresh rate-->
             <ray>
@@ -82,7 +82,7 @@
                     </vertical>
                 </scan>
                 <range> <!-- 50 m range -->
-                    <min>0.4</min>
+                    <min>0.35</min>
                     <max>50</max>
                     <resolution>0.01</resolution>
                 </range>

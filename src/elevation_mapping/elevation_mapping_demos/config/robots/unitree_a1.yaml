@@ -6,27 +6,51 @@ input_sources:
     publish_on_update: true # Whether to publish the elevation map after a callback from this source.
     sensor_processor:
       type: perfect
-      sensor_cutoff_min_depth: 0
-      sensor_cutoff_max_depth: 0
 map_frame_id: "odom"
 robot_base_frame_id: "base"
 robot_pose_with_covariance_topic: "/robot_pose" # Leaving this empty skipps pose covariance updates.
 robot_pose_cache_size: 200
 track_point_frame_id: "odom"
-track_point_x: 0.0
-track_point_y: -10.0
+track_point_x: -41
+track_point_y: 37
 track_point_z: 0.0
 
-length_in_x: 16
-length_in_y: 26
+#time_tolerance: 0.5
 
-position_x: 0.0
-position_y: 0.0
-resolution: 0.05
-min_variance: 0.000009
-max_variance: 0.01
+position_x: 0
+position_y: 0
+
+length_in_x: 40
+length_in_y: 40
+
+# resolution: 0.15
+# min_variance: 0.000009
+# max_variance: 0.01
+# mahalanobis_distance_threshold: 2.5
+# multi_height_noise: 0.0000009
+
+resolution: 0.2
+min_variance: 0.00001
+max_variance: 0.001
 mahalanobis_distance_threshold: 2.5
-multi_height_noise: 0.0000009
-sensor_cutoff_min_depth: 0.05
+multi_height_noise: 0.00002
+# fused_map_publishing_rate: 2.0
+# enable_skip_lower_points: true
+# scanning_duration: 0.01
+# remove_penetrated_points_rate: 5.0
 
-postprocessor_num_threads: 5
+postprocessor_num_threads: 2
+enable_visibility_cleanup: false
+# visibility_cleanup_rate: 0.25
+# robot_motion_map_update/covariance_scale_translation_x: 0.0
+# robot_motion_map_update/covariance_scale_translation_y: 0.0
+# robot_motion_map_update/covariance_scale_translation_z: 0.0
+# robot_motion_map_update/covariance_scale_rotation_x: 0.0
+# robot_motion_map_update/covariance_scale_rotation_y: 0.0
+# robot_motion_map_update/covariance_scale_rotation_z: 0.0
+
+grid_map_layers:
+  - elevation
+  - variance
+  - upper_bound
+  - lower_bound

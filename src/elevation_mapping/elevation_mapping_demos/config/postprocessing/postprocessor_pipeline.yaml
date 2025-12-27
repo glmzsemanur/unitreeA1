@@ -1,20 +1,25 @@
 postprocessor_pipeline: # set by postprocessor_pipeline_name
   # Fill holes in the map with inpainting.
-  - name: inpaint
-    type: gridMapCv/InpaintFilter
+  # 1. Fill the actual gaps (The Median approach you have working)
+  - name: hole_filling
+    type: gridMapFilters/MedianFillFilter
     params:
       input_layer: elevation
-      output_layer: elevation_inpainted
-      radius: 0.05
+      output_layer: elevation_filled
+      fill_hole_radius: 0.1
+      existing_value_radius: 0.05
+      num_erode_dilation_iterations: 0
+      fill_mask_layer: ""
+      filter_existing_values: false
 
-  # Compute Surface normals
-  - name: surface_normals
-    type: gridMapFilters/NormalVectorsFilter
+  # 2. Aggressive Surface Smoothing
+  # A 0.2m radius is the "magic number" for smooth robot paths.
+  - name: mean_smoothing
+    type: gridMapFilters/MeanInRadiusFilter
     params:
-      input_layer: elevation_inpainted
-      output_layers_prefix: normal_vectors_
-      radius: 0.1
-      normal_vector_positive_axis: z
+      input_layer: elevation_filled
+      output_layer: elevation_smooth
+      radius: 0.5  # 20cm radius will effectively melt the noise away
 
   #  Delete layers that are not needed to reduce bandwidth
   #  - name: delete_original_layers

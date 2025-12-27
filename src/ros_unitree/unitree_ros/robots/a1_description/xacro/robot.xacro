@@ -158,7 +158,7 @@
                 <cylinder length="0.05" radius="0.03"/>
             </geometry>
             <material name="red"/>
-            <origin xyz="0 0 0.08" rpy="0 0 0"/>
+            <origin xyz="0 0 0.12" rpy="0 0 0"/>
         </visual>
         <!-- <collision>
             <geometry>
