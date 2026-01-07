@@ -1,0 +1,27 @@
+TrajectoryPlannerROS: # VEYA DWA_Planner
+  max_vel_x: 0.5
+  min_vel_x: 0.1
+  max_vel_theta: 1.0
+  min_in_place_vel_theta: 0.4
+  forward_point_distance: 0.8
+  occdist_scale: 20000.0  # 0.01 gibi bir değerse asla kaçmaz.
+# 2. Global rotaya sadakat (DÜŞÜRÜN)
+  # Robotun rotadan sapmasına izin verin.
+  pdist_scale: 0 
+
+  # 3. Yerel hedefe odaklanma (DÜŞÜRÜN)
+  gdist_scale: 0.1
+
+  # 4. Simülasyon Süresi (YÜKSELTİN)
+  # Robotun engeli önceden fark edip plan yapması için ileriye bakması gerekir.
+  sim_time: 3.0
+  vx_samples: 60       # Hız denemelerini artırır
+  vtheta_samples: 60   # Dönüş denemelerini artırır
+  acc_lim_x: 2.5
+  acc_lim_theta: 3.2
+
+  holonomic_robot: false 
+  
+  # Hedefe varma toleransları
+  yaw_goal_tolerance: 0.1
+  xy_goal_tolerance: 1

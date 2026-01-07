@@ -1,0 +1,22 @@
+<launch>
+
+    <arg name="elevation_r"       default="0.1" />
+  <!-- Load elevation mapping node and its configuration files -->  
+  <node pkg="elevation_mapping"
+        type="elevation_mapping"
+        name="elevation_mapping"
+        output="screen">
+    <rosparam command="load"
+              file="$(find elevation_mapping_demos)/config/robots/unitree_a1.yaml"/>
+    <rosparam command="load"
+              file="$(find elevation_mapping_demos)/config/postprocessing/postprocessor_pipeline.yaml"/>
+    <param name="resolution" value="$(arg elevation_r)" />
+  </node>
+      <node pkg="robot_localization"
+      type="ekf_localization_node"
+      name="ekf_localization"
+      >
+        <rosparam command="load" file="$(find summit_odometry)/config/ekf_localization.yaml"/>
+    </node>
+</launch>
+

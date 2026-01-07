@@ -1,0 +1,19 @@
+footprint: [[-0.3, -0.3], [-0.3, 0.3], [0.3, 0.3], [0.3, -0.3]]
+robot_radius: 0.4 # Adjust based on your actual robot width
+
+obstacle_range: 3.0
+raytrace_range: 3.5
+
+inflation_layer:
+  inflation_radius: 0.5 # How far the robot stays from cave walls
+  cost_scaling_factor: 3.0
+
+obstacle_layer:
+  observation_sources: point_cloud_sensor
+  point_cloud_sensor: {
+    sensor_frame: map,
+    data_type: PointCloud2,
+    topic: /octomap_pcl,
+    marking: true,
+    clearing: true
+  }

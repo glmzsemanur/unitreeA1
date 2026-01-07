@@ -1,0 +1,15 @@
+local_costmap:
+  global_frame: map
+  robot_base_frame: base
+  update_frequency: 1.0 
+  publish_frequency: 2.0 
+
+  static_map: false
+  rolling_window: true
+  cost_scaling_factor: 5
+  width: 8
+  height: 8
+  plugins:
+    - {name: static_map_layer,  type: "costmap_2d::StaticLayer"}
+    - {name: inflation_layer,     type: "costmap_2d::InflationLayer"}
+  

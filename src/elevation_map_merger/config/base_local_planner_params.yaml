@@ -1,0 +1,16 @@
+TrajectoryPlannerROS:
+  # Speed limits
+  max_vel_x: 0.4
+  min_vel_x: 0.1
+  max_vel_theta: 1.0
+  min_in_place_vel_theta: 0.4
+
+  # Goal tolerance
+  yaw_goal_tolerance: 0.1
+  xy_goal_tolerance: 0.2
+
+  # How many seconds into the future to simulate
+  sim_time: 1.5 
+  
+  # How much to avoid obstacles (higher = more scared of walls)
+  occdist_scale: 0.02

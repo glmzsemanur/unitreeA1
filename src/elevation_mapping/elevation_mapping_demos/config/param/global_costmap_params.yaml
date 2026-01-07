@@ -1,0 +1,13 @@
+global_costmap:
+  global_frame: map
+  trinary_costmap: false
+  robot_base_frame: base
+  update_frequency: 2
+  publish_frequency: 2
+  static_map: false
+  cost_scaling_factor: 0
+  width: 140
+  height: 200 
+  plugins:
+    - {name: static_map_layer2,    type: "costmap_2d::StaticLayer"}
+    - {name: inflation_layer,     type: "costmap_2d::InflationLayer"}

@@ -13,7 +13,11 @@
   <depend>elevation_mapping</depend>
   <depend>grid_map_rviz_plugin</depend>
   <depend>rviz</depend>
-
+  <depend>roscpp</depend>
+  <depend>grid_map_ros</depend>
+  <depend>nav_msgs</depend>
+  <depend>grid_map_msgs</depend>
+  <depend>grid_map_algorithms</depend>
   <exec_depend>nodelet</exec_depend>
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>grid_map_visualization</exec_depend>

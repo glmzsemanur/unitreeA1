@@ -1,0 +1,36 @@
+local_costmap:
+  global_frame: odom
+  robot_base_frame: base
+  rolling_window: true
+  update_frequency: 5.0
+  publish_frequency: 2.0
+  static_map: false # Burası false kalsın
+  rolling_window: true
+  width: 20.0
+  height: 20.0
+  resolution: 0.1
+  inflation_layer:
+    # Bu değer robotun genişliğinden (örn: 0.5m) mutlaka büyük olmalıdır.
+    inflation_radius: 1.0 
+    cost_scaling_factor: -100 
+
+  plugins:
+    - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"}
+    - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
+
+  obstacle_layer:
+    observation_sources: elevation_cloud
+    enabled: true
+    combination_method: 1
+    footprint_clearing_enabled: true
+    elevation_cloud:
+      sensor_frame: base
+      topic: /elevation_to_occupancy_node/obstacle_points
+      data_type: PointCloud2 # DOĞRU TİP
+      marking: true
+      clearing: false
+      min_obstacle_height: 0.25
+      max_obstacle_height: 1.5
+      obstacle_range: 10
+      raytrace_range: 15
+

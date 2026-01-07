@@ -1,0 +1,10 @@
+<launch>
+  <arg name="map_file" default="$(find elevation_mapping_demos)/maps/my_global_map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  <arg name="occupancy_r" default="0.1" />
+  <!-- Load elevation to octomap/costmap node -->  
+  <node pkg="elevation_mapping_demos" type="elevation_to_occupancy" name="elevation_to_occupancy" output="screen">
+    <param name="resolution" value="$(arg occupancy_r)" />
+  </node>
+</launch>
+

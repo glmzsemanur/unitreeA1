@@ -1,0 +1,31 @@
+<launch>
+
+  <!-- Elevation map → OctoMap -->
+  <node pkg="elevation_map_merger"
+        type="elevation_to_octo"
+        name="elevation_to_octo"
+        output="screen">
+
+    <param name="resolution" value="0.25" />
+    <param name="floor_height" value="-2.0" />
+
+  </node>
+
+  <!-- OctoMap Server (MAP MODE) -->
+  <node pkg="octomap_server"
+        type="octomap_server_node"
+        name="octomap_server"
+        output="screen">
+
+    <!-- Tell octomap_server we provide a full map -->
+    <param name="frame_id" value="map" />
+    <param name="latch" value="true" />
+    <param name="publish_binary_map" value="true" />
+    <param name="publish_full_map" value="true" />
+
+    <!-- THIS IS THE CRITICAL PART -->
+    <remap from="octomap_full" to="/octomap" />
+
+  </node>
+
+</launch>

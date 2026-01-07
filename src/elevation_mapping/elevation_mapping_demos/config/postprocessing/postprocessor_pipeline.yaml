@@ -1,28 +1,59 @@
-postprocessor_pipeline: # set by postprocessor_pipeline_name
-  # Fill holes in the map with inpainting.
-  # 1. Fill the actual gaps (The Median approach you have working)
+postprocessor_pipeline:
+
+  - name: buffer_normalizer
+    type: gridMapFilters/BufferNormalizerFilter
+
+  # 2. Fill larger holes
   - name: hole_filling
     type: gridMapFilters/MedianFillFilter
     params:
       input_layer: elevation
       output_layer: elevation_filled
-      fill_hole_radius: 0.1
-      existing_value_radius: 0.05
-      num_erode_dilation_iterations: 0
+      fill_hole_radius: 1
+      existing_value_radius: 0.0
+      num_erode_dilation_iterations: 10
       fill_mask_layer: ""
       filter_existing_values: false
 
-  # 2. Aggressive Surface Smoothing
-  # A 0.2m radius is the "magic number" for smooth robot paths.
-  - name: mean_smoothing
+  # 3. Smooth the surface
+  - name: surface_smoothing
     type: gridMapFilters/MeanInRadiusFilter
     params:
       input_layer: elevation_filled
       output_layer: elevation_smooth
-      radius: 0.5  # 20cm radius will effectively melt the noise away
+      radius: 0.1
 
-  #  Delete layers that are not needed to reduce bandwidth
-  #  - name: delete_original_layers
-  #    type: gridMapFilters/DeletionFilter
-  #    params:
-  #      layers: [lowest_scan_point,sensor_x_at_lowest_scan, sensor_y_at_lowest_scan, sensor_z_at_lowest_scan] # List of layers.
+
+  # # 1. Calculate the 'step' height (max Z - min Z) in a 3x3 neighborhood
+  # - name: edge_detection
+  #   type: gridMapFilters/SlidingWindowMathExpressionFilter
+  #   params:
+  #     input_layer: elevation_smooth
+  #     output_layer: step_height
+  #     window_size: 5
+  #     operation: peak_to_peak # This finds the max vertical "jump" in the window
+  #     expression: "max(elevation_smooth) - min(elevation_smooth)"
+  #     compute_empty_cells: false 
+  #     edge_handling: crop # Options: inside, crop, empty, mean
+
+  # - name: step_mask
+  #   type: gridMapFilters/ThresholdFilter
+  #   params:
+  #     condition_layer: step_height
+  #     output_layer: elevation_smooth
+  #     upper_threshold: 0.20
+  #     set_to: 100
+
+  # - name: water_mask
+  #   type: gridMapFilters/ThresholdFilter
+  #   params:
+  #     condition_layer: elevation_smooth
+  #     output_layer: elevation_smooth
+  #     lower_threshold: -1
+  #     set_to: 100
+
+  # Delete layers that are not needed to reduce bandwidth
+  - name: delete_original_layers
+    type: gridMapFilters/DeletionFilter
+    params:
+      layers: [variance, horizontal_variance_x, horizontal_variance_y, horizontal_variance_xy, lowest_scan_point, sensor_x_at_lowest_scan, sensor_y_at_lowest_scan, sensor_z_at_lowest_scan] # List of layers.

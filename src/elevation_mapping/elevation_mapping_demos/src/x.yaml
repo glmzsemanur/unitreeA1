@@ -1,0 +1,29 @@
+grid_map_filters:
+  # 1. Gürültü temizleme
+  - name: mean_filter
+    type: gridMapFilters/MeanInPlaceFilter
+    params:
+      radius: 0.1
+
+  # 2. Normal vektörlerini hesapla (normal_x, normal_y, normal_z katmanlarını oluşturur)
+  - name: surface_normals
+    type: gridMapFilters/NormalVectorsFilter
+    params:
+      input_layer: elevation
+      output_layers_prefix: normal_
+
+  # 3. Matematiksel ifade ile Eğim (Slope) hesabı
+  # Normal vektörün Z bileşeni (normal_z), yüzeyin yataylığını verir.
+  # acos(normal_z) bize radyan cinsinden eğimi verir.
+  - name: slope_calculation
+    type: gridMapFilters/MathExpressionFilter
+    params:
+      output_layer: slope
+      expression: acos(normal_z)
+
+  # 4. Alternatif: Basit bir eşikleme ile "traversability" (geçilebilirlik) katmanı
+  - name: traversability
+    type: gridMapFilters/MathExpressionFilter
+    params:
+      output_layer: obstacle_mask
+      expression: slope > 0.5 # 0.5 radyan (~28 derece) üzerini engel say

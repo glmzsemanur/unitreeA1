@@ -6,7 +6,7 @@
     <arg name="debug" default="false"/>
     <!-- Debug mode will hung up the robot, use "true" or "false" to switch it. -->
     <arg name="user_debug" default="false"/>
-
+  	<arg name="use_localization" default="false" />
     <include file="$(find cpr_inspection_gazebo)/launch/inspection_world.launch">
     </include>
 
@@ -21,7 +21,7 @@
           args="-urdf -model $(arg rname)_gazebo -param robot_description -unpause 
           -x 21
           -y -17
-          -z 2.5
+          -z 2
           -Y 0
           ">
     </node>
@@ -90,4 +90,12 @@
       name="robot_odom_to_pose_publisher"
       output="screen"
       launch-prefix="bash -c 'sleep 5.30; $0 $@' "/>
+
+	  <arg name="elevation_r"       default="0.1" />
+	  <node
+	    pkg="tf2_ros"
+	    type="static_transform_publisher"
+	    name="map_to_odom"
+	    args="0 0 0 0 0 0 map odom" />
+      
 </launch>
