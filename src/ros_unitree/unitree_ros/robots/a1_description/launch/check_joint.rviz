@@ -198,64 +198,12 @@ Visualization Manager:
       Show Trail: false
       Value: false
     - Class: rviz/TF
-      Enabled: true
+      Enabled: false
       Filter (blacklist): ""
       Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        FL_calf:
-          Value: false
-        FL_foot:
-          Value: false
-        FL_hip:
-          Value: false
-        FL_thigh:
-          Value: false
-        FL_thigh_shoulder:
-          Value: false
-        FR_calf:
-          Value: false
-        FR_foot:
-          Value: false
-        FR_hip:
-          Value: false
-        FR_thigh:
-          Value: false
-        FR_thigh_shoulder:
-          Value: false
-        RL_calf:
-          Value: false
-        RL_foot:
-          Value: false
-        RL_hip:
-          Value: false
-        RL_thigh:
-          Value: false
-        RL_thigh_shoulder:
-          Value: false
-        RR_calf:
-          Value: false
-        RR_foot:
-          Value: false
-        RR_hip:
-          Value: false
-        RR_thigh:
-          Value: false
-        RR_thigh_shoulder:
-          Value: false
-        base:
-          Value: true
-        imu_link:
-          Value: false
-        lidar_link:
-          Value: false
-        map:
-          Value: false
-        odom:
-          Value: true
-        trunk:
-          Value: false
       Marker Alpha: 1
       Marker Scale: 5
       Name: TF
@@ -263,49 +211,14 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          odom:
-            base:
-              trunk:
-                FL_hip:
-                  FL_thigh:
-                    FL_calf:
-                      FL_foot:
-                        {}
-                  FL_thigh_shoulder:
-                    {}
-                FR_hip:
-                  FR_thigh:
-                    FR_calf:
-                      FR_foot:
-                        {}
-                  FR_thigh_shoulder:
-                    {}
-                RL_hip:
-                  RL_thigh:
-                    RL_calf:
-                      RL_foot:
-                        {}
-                  RL_thigh_shoulder:
-                    {}
-                RR_hip:
-                  RR_thigh:
-                    RR_calf:
-                      RR_foot:
-                        {}
-                  RR_thigh_shoulder:
-                    {}
-                imu_link:
-                  {}
-                lidar_link:
-                  {}
+        {}
       Update Interval: 0
-      Value: true
+      Value: false
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 3.41894793510437
-        Min Value: -1.8593003749847412
+        Max Value: 3.345614433288574
+        Min Value: -1.8492345809936523
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -494,7 +407,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 38.14762496948242
+      Distance: 61.73428726196289
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -502,17 +415,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 1.123023271560669
-        Y: 0.055441714823246
-        Z: 0.9459824562072754
+        X: -0.8813328146934509
+        Y: -0.46661633253097534
+        Z: 2.6966123580932617
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.2047969102859497
+      Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
-      Yaw: 3.1900060176849365
+      Yaw: 3.1650068759918213
     Saved: ~
 Window Geometry:
   Displays:

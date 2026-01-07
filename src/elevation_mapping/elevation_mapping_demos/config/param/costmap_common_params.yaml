@@ -16,7 +16,7 @@ statuc_map_layer2:
     rolling_window: false
 
 inflation_layer:
-    inflation_radius: 0.8
+    inflation_radius: 1.5
     cost_scaling_factor: 100
     track_unknown_space: true
     

@@ -15,7 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
   octomap
   octomap_msgs
   octomap_ros
-  
+  rosbag
 )
 
 find_package(Eigen3 REQUIRED)
