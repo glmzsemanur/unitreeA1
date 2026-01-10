@@ -3,15 +3,14 @@ raytrace_range: 10
 footprint: [[-0.25, -0.145], [-0.25, 0.145], [0.25, 0.145], [0.25, -0.145]]
 
 transform_tolerance: 0.5
-resolution: 0.1 
+
 
 static_map_layer:
     map_topic: /elevation_to_occupancy/costmap_2d
     rolling_window: true
-
     track_unknown_space: true
 
-statuc_map_layer2:
+static_map_layer2:
     map_topic: /map
     rolling_window: false
 
